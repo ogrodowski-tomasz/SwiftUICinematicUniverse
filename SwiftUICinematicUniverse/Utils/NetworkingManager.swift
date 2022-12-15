@@ -9,6 +9,8 @@ import Foundation
 
 enum NetworkingError: Error {
     case badUrl
+    case decoding
+    case serverError
 }
 
 protocol NetworkingManagerable {
@@ -25,14 +27,16 @@ struct NetworkingManager: NetworkingManagerable {
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             if let error {
                 print("DEBUG: Error fetching: \(error)")
-                completion(.failure(.badUrl))
+                completion(.failure(.serverError))
+                return
             } else if let data {
                 do {
                     let result = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(result))
                 } catch {
                     print("DEBUG: error decoding: \(error)")
-                    completion(.failure(.badUrl))
+                    completion(.failure(.decoding))
+                    return
                 }
             }
             

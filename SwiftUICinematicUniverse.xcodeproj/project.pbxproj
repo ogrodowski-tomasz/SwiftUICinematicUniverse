@@ -97,20 +97,17 @@
 		1E7A771C2933BE19000DD42C /* SwiftUICinematicUniverse */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A77332933C957000DD42C /* Model */,
 				1E7A77462933E524000DD42C /* View */,
 				1E7A77412933D65F000DD42C /* ViewModel */,
 				1E7A773E2933D479000DD42C /* Service */,
 				1E7A77392933D1FC000DD42C /* Resources */,
 				1E7A77362933C9CD000DD42C /* Utils */,
-				1E7A77332933C957000DD42C /* Model */,
 				1E7A771D2933BE19000DD42C /* SwiftUICinematicUniverseApp.swift */,
 				1E7A771F2933BE19000DD42C /* ContentView.swift */,
 				1E7A772B2933BE5F000DD42C /* Constans.swift */,
 				1E7A77212933BE19000DD42C /* Assets.xcassets */,
 				1E7A77232933BE19000DD42C /* Preview Content */,
-				1E7A772D2933BEF7000DD42C /* AuthorizationManager.swift */,
-				1E7A77312933C56B000DD42C /* Endpoint.swift */,
-				1E7A772F2933C55C000DD42C /* Extensions.swift */,
 			);
 			path = SwiftUICinematicUniverse;
 			sourceTree = "<group>";
@@ -135,8 +132,11 @@
 		1E7A77362933C9CD000DD42C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A77312933C56B000DD42C /* Endpoint.swift */,
+				1E7A772D2933BEF7000DD42C /* AuthorizationManager.swift */,
 				1E7A77372933C9D7000DD42C /* NetworkingManager.swift */,
 				1E7A773C2933D234000DD42C /* StaticJsonMapper.swift */,
+				1E7A772F2933C55C000DD42C /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

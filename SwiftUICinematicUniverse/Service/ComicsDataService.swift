@@ -23,15 +23,6 @@ class ComicsDataService: ObservableObject {
     }
     
     private func publishComics() {
-//        do {
-//            let result = try StaticJsonMapper.fetch(filename: "StaticComicsData", decodeToType: ComicApiWrapper.self)
-//            self.comics = result.data.results
-//            self.allComics = result.data.total
-//        } catch {
-//            print("Error! \(error)")
-//        }
-        
-        
         networkingManager.fetch(endpoint: .comics(forCharacterId: characterId), decodeToType: ComicApiWrapper.self) { [weak self] result in
             switch result {
             case .success(let apiResponse):

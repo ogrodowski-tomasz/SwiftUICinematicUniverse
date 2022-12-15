@@ -31,12 +31,9 @@ extension Endpoint {
         AuthorizationManager().createHash { queryItems in
             urlComponents.queryItems = queryItems
         }
-        
         if case .searchCharacters(let name) = self {
             urlComponents.queryItems?.append(URLQueryItem(name: "nameStartsWith", value: name))
         }
-        
-//        print("URL: ", urlComponents.url as Any)
         return urlComponents.url
     }
 }
