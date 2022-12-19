@@ -56,6 +56,4 @@ let PRIVATE_API_KEY = "<PRIVATE API KEY HERE>"
 ### What's coming next?
 Possible updates should contain 
 - pull to refresh
-- infinite scrolling (there are A LOT of characters in Marvel's database :P )
-- pagination on comic books (some characters has 500+ comic books)
 - comic details
