@@ -47,4 +47,8 @@ class CharacterDetailsViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func fetchNextSetOfComics() {
+        service.page += 1
+    }
 }

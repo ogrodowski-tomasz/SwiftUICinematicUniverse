@@ -10,6 +10,13 @@ import Foundation
 class CharacterDataService: ObservableObject {
     
     @Published private(set) var characters = [Character]()
+    var page = 0 {
+        didSet {
+            if !(page == oldValue) {
+                fetchCharacters()
+            }
+        }
+    }
     
     let networkingManager: NetworkingManagerable
     
@@ -19,10 +26,10 @@ class CharacterDataService: ObservableObject {
     }
     
     private func fetchCharacters() {
-        networkingManager.fetch(endpoint: .characters, decodeToType: CharacterApiWrapper.self) { [weak self] result in
+        networkingManager.fetch(endpoint: .characters(page: page), decodeToType: CharacterApiWrapper.self) { [weak self] result in
             switch result {
             case .success(let marvelDataWrapper):
-                self?.characters = marvelDataWrapper.data.results
+                self?.characters.append(contentsOf: marvelDataWrapper.data.results)
             case .failure(let error):
                 print("DEBUG: Error! ", error)
             }

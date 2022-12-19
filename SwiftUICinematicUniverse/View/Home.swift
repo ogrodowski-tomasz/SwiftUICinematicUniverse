@@ -16,7 +16,9 @@ struct Home: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 ScrollView {
-                    CharactersListView(characters: viewModel.characters)
+                    CharactersListView(characters: viewModel.characters) {
+                        viewModel.fetchNextSetOfCharacters()
+                    }
                 }
             }
             .navigationTitle("Home")

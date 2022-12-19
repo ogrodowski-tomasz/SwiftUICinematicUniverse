@@ -2,6 +2,7 @@
 
 ### Home View
 ##### Main view shows couple of first Marvel characters. 
+#### Important! Infinite pagination is available. When last hero is shown, next set of characters is being fetched!
 <p align="leading">
 <img src="https://github.com/ogrodowski-tomasz/SwiftUICinematicUniverse/blob/main/Screenshots/main1.png" width=150>
 <img src="https://github.com/ogrodowski-tomasz/SwiftUICinematicUniverse/blob/main/Screenshots/main2.png" width=150>
@@ -14,7 +15,7 @@ Tapping on one of them navigates to:
 - Thumbnail image of character
 - Characters name
 - Short desctription. This block is tappable. If description is long, user can toggle show number of lines. There are cases where description is not provided
-- Comics with this character (Comic thumbnail image and title)
+- Comics with this character (Comic thumbnail image and title). Here also infinite pagination is available.
 
 <p align="leading">
 <img src="https://github.com/ogrodowski-tomasz/SwiftUICinematicUniverse/blob/main/Screenshots/details1.png" width=150>

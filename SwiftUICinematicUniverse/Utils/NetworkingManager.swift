@@ -24,6 +24,7 @@ struct NetworkingManager: NetworkingManagerable {
             completion(.failure(.badUrl))
             return
         }
+        print("DEBUG: Calling url: \(url)")
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             if let error {
                 print("DEBUG: Error fetching: \(error)")

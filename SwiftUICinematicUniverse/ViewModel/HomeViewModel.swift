@@ -30,4 +30,9 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func fetchNextSetOfCharacters() {
+        print("DEBUG: Incremented page number and fetching next set....")
+        characterDataService.page += 1
+    }
+    
 }

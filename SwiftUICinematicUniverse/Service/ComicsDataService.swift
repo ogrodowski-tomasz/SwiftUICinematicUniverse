@@ -15,6 +15,14 @@ class ComicsDataService: ObservableObject {
     let networkingManager: NetworkingManagerable
     let characterId: Int
     
+    var page = 0 {
+        didSet {
+            if !(page == oldValue) {
+                publishComics()
+            }
+        }
+    }
+    
     init(characterId: Int, networkingManager: NetworkingManagerable = NetworkingManager()) {
         self.characterId = characterId
         self.networkingManager = networkingManager
@@ -23,11 +31,11 @@ class ComicsDataService: ObservableObject {
     }
     
     private func publishComics() {
-        networkingManager.fetch(endpoint: .comics(forCharacterId: characterId), decodeToType: ComicApiWrapper.self) { [weak self] result in
+        networkingManager.fetch(endpoint: .comics(forCharacterId: characterId, page: page), decodeToType: ComicApiWrapper.self) { [weak self] result in
             switch result {
             case .success(let apiResponse):
                 self?.allComics = apiResponse.data.total
-                self?.comics = apiResponse.data.results
+                self?.comics.append(contentsOf: apiResponse.data.results)
             case .failure(let error):
                 print("DEBUG: Error comics ", error)
             }

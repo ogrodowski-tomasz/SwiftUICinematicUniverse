@@ -49,8 +49,7 @@ struct CharacterDetailsView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                    if !character.description.isEmpty {
-                        Text(character.description)
+                    Text(character.description.isEmpty ? "No description provided" : character.description)
                             .multilineTextAlignment(.center)
                             .lineLimit(showFullDesctiption ? nil : 2)
                             .padding()
@@ -63,7 +62,7 @@ struct CharacterDetailsView: View {
                                     showFullDesctiption.toggle()
                                 }
                             }
-                    }
+                    
                     
                     if viewModel.isLoading {
                         ProgressView {
@@ -82,7 +81,13 @@ struct CharacterDetailsView: View {
                                 LazyHStack {
                                     ForEach(viewModel.comics) { comic in
                                         ComicCardView(comic: comic)
+                                            .onAppear {
+                                                if comic.id == viewModel.comics.last?.id {
+                                                    viewModel.fetchNextSetOfComics()
+                                                }
+                                            }
                                     }
+                                    ProgressView()
                                 }
                             }
                         }
